@@ -1,6 +1,3 @@
-#ifndef CONFIG_H
-#define CONFIG_H
-
 #define MOD Mod4Mask
 
 #define COM(...) {.com = (const char *[]){__VA_ARGS__, 0}}
@@ -54,5 +51,3 @@ static struct button buttons[] = {
     {MOD,           Button2, win_lower, {0}},
     {MOD|ShiftMask, Button2, win_kill, {0}},
 };
-
-#endif

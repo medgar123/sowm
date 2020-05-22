@@ -9,7 +9,7 @@ all: sowm
 config.h:
 	cp config.def.h config.h
 
-sowm: sowm.c sowm.h config.h Makefile
+sowm: sowm.c config.h Makefile
 	$(CC) -O3 $(CFLAGS) -o $@ $< -lX11 $(LDFLAGS)
 
 install: all
