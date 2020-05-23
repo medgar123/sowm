@@ -6,8 +6,6 @@ CC     ?= gcc
 
 all install: sowm
 	@-usage="$(install)"; install -Dm755 $< $${usage:?make install=BINDIR}/sowm
-config.h:
-	cp config.def.h config.h
-sowm.o: sowm.c config.h Makefile
+sowm.o: sowm.c config.h
 clean:; rm -f sowm *.o
 .PHONY: all install clean
