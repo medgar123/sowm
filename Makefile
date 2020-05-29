@@ -1,24 +1,13 @@
-CFLAGS += -std=c99 -Wall -Wextra -pedantic -Wold-style-declaration
+CFLAGS += -O3 -std=c99 -Wall -Wextra -pedantic -Wold-style-declaration
 CFLAGS += -Wmissing-prototypes -Wno-unused-parameter
-PREFIX ?= /usr
-BINDIR ?= $(PREFIX)/bin
+LDFLAGS = -static
+LDLIBS = `pkg-config $(LDFLAGS) --libs x11`
 CC     ?= gcc
 
-all: sowm
-
+all install: sowm
+	@-usage="$(install)"; install -Dm755 $< $${usage:?make install=BINDIR}/sowm
 config.h:
 	cp config.def.h config.h
-
-sowm: sowm.c config.h Makefile
-	$(CC) -O3 $(CFLAGS) -o $@ $< -lX11 $(LDFLAGS)
-
-install: all
-	install -Dm755 sowm $(DESTDIR)$(BINDIR)/sowm
-
-uninstall:
-	rm -f $(DESTDIR)$(BINDIR)/sowm
-
-clean:
-	rm -f sowm *.o
-
-.PHONY: all install uninstall clean
+sowm.o: sowm.c config.h Makefile
+clean:; rm -f sowm *.o
+.PHONY: all install clean
