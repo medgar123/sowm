@@ -9,7 +9,7 @@ static struct key keys[] = {
     {MOD,           XK_f,      win_fs,     {0}},
     {MOD,           XK_h,      win_hide,   {0}},
 
-    {0,        XK_KP_Add,      ws_toggle,   {0}},
+    {0,        XK_KP_Add,      win_lower,   {0}},
 
     {ShiftMask|MOD, XK_q,      run,        COM("matricide")},
 
@@ -50,4 +50,7 @@ static struct button buttons[] = {
 
     {MOD,           Button2, win_lower, {0}},
     {MOD|ShiftMask, Button2, win_kill, {0}},
+
+    {MOD,           Button4, win_lower, {0}},
+    {MOD,           Button5, ws_toggle, {0}},
 };
