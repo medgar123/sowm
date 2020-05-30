@@ -238,6 +238,7 @@ void run(const Arg arg) {
 
     setsid();
     execvp((char*)arg.com[0], (char**)arg.com);
+    exit(111);
 }
 
 // Taken from DWM. Many thanks. https://git.suckless.org/dwm
